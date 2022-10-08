@@ -26,8 +26,8 @@ Menu = pygame.image.load('Pictures/menu.png')
 #create button instances
 Re_button = Buttonpic.Button(600, 150, Re, 0.15)
 Exit_button = Buttonpic.Button(600, 300, Exit, 0.5)
-ReScore_button = Buttonpic.Button(500, 530, ReScore, 0.2)
-Menu_button = Buttonpic.Button(150, 320, Menu, 0.5)
+ReScore_button = Buttonpic.Button(500, 530, ReScore, 0.05)
+Menu_button = Buttonpic.Button(150, 100, Menu, 0.5)
 
 class Button(pygame.sprite.Sprite):
     ''' A button treated like a Sprite... and killed too '''
@@ -177,11 +177,11 @@ def check_score(answered="wrong"):
 
         
         score.change_text("Your score: "+str(points), color="black")
-        Your_on.change_text("You are currently on questions number "+str(qnumc)+" out of "+str(len(new_r))+" questions.", color="black")
+        Your_on.change_text("You are currently on questions numbers "+str(qnum), color="black")
         # Change the text of the question
         title.change_text(questions[qnum-1][0], color="black")
         # change the question number
-        num_question.change_text(str(qnum))
+        num_question.change_text(str(qnumc))
         show_question(qnum) # delete old buttons and show new
 
         if answered == "wrong":
@@ -397,20 +397,20 @@ def reset():
     x = 0
     thank.change_text("")
     score.change_text("Your score: "+str(points), color="black")
-    Your_on.change_text("You are currently on questions number "+str(qnumc)+" out of "+str(len(new_r))+" questions.", color="black")
+    Your_on.change_text("You are currently on questions numbers "+str(qnum), color="black")
     title.change_text(questions[qnum-1][0], color="black")
-    num_question.change_text(str(qnum))
+    num_question.change_text(str(qnumc))
     
     
     
     
 
 # ================= SOME LABELS ==========================
-num_question = Label(screen, str(qnum), 10, 15, size=50)
+num_question = Label(screen, str(qnumc), 10, 15, size=50)
 score = Label(screen, "Your score will be display here", 45, 500,size=30 ,color="Black")
 high = Label(screen, "Your high score will be display here", 45, 530, size=30, color="black")
 title = Label(screen, questions[qnum-1][0], 50, 30, size=20, color="black")
-Your_on = Label(screen,"The questions you are currently on will be display here", 45, 470, size=30, color="black" )
+Your_on = Label(screen,"You are currently on questions numbers "+str(qnum), 45, 470, size=30, color="black" )
 thank = Label(screen, "", 45, 250,size=50 ,color="Black")
 
 def loop():
