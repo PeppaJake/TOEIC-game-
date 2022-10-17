@@ -433,11 +433,13 @@ def loop():
             with open('score.txt', 'w') as file:
                  file.write(str(high_score))
             pygame.quit()
+            sys.exit()
         if os.path.exists('score.txt'):
             with open('score.txt', 'r') as file:
              high_score = int(file.read())
         else:
             high_score = 0 
+            
 
         if ReScore_button.draw(screen):
             #Reset high score
